@@ -1,0 +1,32 @@
+version: '3.8'
+
+# compose for service and postgres db
+services:
+  # api:
+  #   image: artix-server
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: .
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     DATABASE_URL: postgres://user:password@postgres:5432/artix-db
+  #     NODE_ENV: development
+  #     PORT: 3000
+  #   ports:
+  #     - '8080:3000'
+
+  postgres:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: artix-db
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  postgres:

@@ -16,7 +16,7 @@ This is a project built with NestJS, Prisma, PostgreSQL, and Docker.
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/BimGoAround/artix-server.git
 ```
 
 2. Navigate to the project directory:

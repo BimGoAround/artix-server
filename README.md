@@ -54,7 +54,7 @@ npx prisma migrate dev
 8. Seed the database:
 
 ```bash
-npx prisma db seed --preview-feature
+npx prisma db seed
 ```
 
 9. Start the server:

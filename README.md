@@ -48,10 +48,10 @@ docker-compose up -d
 7. Run the Prisma migrations to create the database schema:
 
 ```bash
-npx prisma migrate dev
+npm run prisma:migrate
 ```
 
-8. Seed the database:
+8. Seed the database: (Optional)
 
 ```bash
 npx prisma db seed

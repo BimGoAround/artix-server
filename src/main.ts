@@ -9,6 +9,7 @@ async function bootstrap() {
     .setTitle('Artix API')
     .setDescription('The Artix API description')
     .setVersion('0.1')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

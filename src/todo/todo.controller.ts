@@ -19,7 +19,7 @@ import {
   ApiBearerAuth,
 } from '@nestjs/swagger';
 import { TodoEntity } from './entities/todo.entity';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { AccessTokenGuard } from 'src/auth/guards/accessToken.guard';
 
 @Controller('todo')
 @ApiTags('todo')
@@ -39,7 +39,7 @@ export class TodoController {
     return this.todoService.findAll();
   }
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(AccessTokenGuard)
   @ApiBearerAuth()
   @Get(':id')
   @ApiOkResponse({ type: TodoEntity })

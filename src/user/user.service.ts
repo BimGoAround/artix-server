@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -9,10 +10,6 @@ export class UserService {
 
   async create(createUserDto: CreateUserDto) {
     try {
-      if (createUserDto.password) {
-        createUserDto.password = await bcrypt.hash(createUserDto.password, 10);
-      }
-
       const data = {
         ...createUserDto,
         createdAt: new Date(),
@@ -45,5 +42,30 @@ export class UserService {
   // TODO: just for development purposes
   async findAll() {
     return this.prismaService.user.findMany();
+  }
+
+  async update(id: string, data: UpdateUserDto) {
+    try {
+      if (data.password) {
+        data.password = await bcrypt.hash(data.password, 10);
+      }
+
+      return this.prismaService.user.update({
+        where: {
+          id,
+        },
+        data,
+      });
+    } catch (error) {
+      throw new BadRequestException(error.message);
+    }
+  }
+
+  async delete(id: string) {
+    return this.prismaService.user.delete({
+      where: {
+        id,
+      },
+    });
   }
 }

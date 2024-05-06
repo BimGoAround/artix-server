@@ -7,6 +7,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { FileUploadModule } from './file-upload/file-upload.module';
+import { DrawFileModule } from './draw-file/draw-file.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { FileUploadModule } from './file-upload/file-upload.module';
     UserModule,
     AuthModule,
     FileUploadModule,
+    DrawFileModule,
   ],
   controllers: [AppController],
   providers: [AppService],

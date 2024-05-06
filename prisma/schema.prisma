@@ -22,12 +22,24 @@ model Todo {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  username  String   @unique
-  password  String
+  id           String     @id @default(cuid())
+  email        String     @unique
+  username     String     @unique
+  password     String
   refreshToken String?
-  avatar   String?
+  avatar       String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  DrawFile     DrawFile[]
+}
+
+model DrawFile {
+  id        String   @id @default(cuid())
+  name      String
+  thumbnail String?
+  data      String? // TODO: check this one when data is huge
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

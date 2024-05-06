@@ -6,6 +6,7 @@ import { TodoModule } from './todo/todo.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { FileUploadModule } from './file-upload/file-upload.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AuthModule } from './auth/auth.module';
     PrismaModule,
     UserModule,
     AuthModule,
+    FileUploadModule,
   ],
   controllers: [AppController],
   providers: [AppService],
